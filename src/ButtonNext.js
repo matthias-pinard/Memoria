@@ -1,7 +1,5 @@
-import React from 'react';
+import React from "react";
 
-export default (props) => {
-		return(
-				<button onClick={props.onClick} >{props.text}</button>
-		)
-}
+export default props => {
+  return <button onClick={props.onClick}>{props.text}</button>;
+};
