@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-import NumDisplay from "./NumDisplay.js";
-import ButtonNext from "./ButtonNext.js";
-import NumInput from "./NumInput.js";
-import Score from "./Score.js";
+import Stage0 from "./Stage0.js";
+import Stage1 from "./Stage1.js";
+import Stage2 from "./Stage2.js";
 
 class App extends Component {
   constructor() {
@@ -11,7 +10,7 @@ class App extends Component {
     let nums = ["06", "08", "09", "2"];
     this.state = {
       numIndex: 0,
-      stage: 0,
+      stage: 1,
       currentNum: "",
       numArray: nums,
       answerNumArray: [],
@@ -53,42 +52,27 @@ class App extends Component {
   }
 
   render() {
-    switch (this.state.stage) {
-      case 0:
-        return (
-          <div className="App">
-            <h1> Memoria </h1>
-            <NumDisplay num={this.state.numArray[this.state.numIndex]} />
-            <ButtonNext text="next" onClick={this.onCLickNextStage0} />
-          </div>
-        );
-
-      case 1:
-        return (
-          <div className="App">
-            <h1> Memoria </h1>
-            <NumInput
-              value={this.state.currentNum}
-              handleChange={e => this.handleChange(e)}
-            />
-            <ButtonNext text="next" onClick={this.onCLickNextStage1} />
-            <Score
-              value={this.state.goodNum}
-              max={this.state.numArray.length}
-            />
-          </div>
-        );
-
-      case 2:
-        return (
-          <div className="App">
-            <Score
-              value={this.state.goodNum}
-              max={this.state.numArray.length}
-            />
-          </div>
-        );
-    }
+    return (
+      <div className="App">
+        <h1> Memoria </h1>
+        {this.state.stage === 0 && (
+          <Stage0
+            num={this.state.numArray[this.state.numIndex]}
+            onClick={this.onCLickNextStage0}
+          />
+        )}
+        {this.state.stage === 1 && (
+          <Stage1
+            value={this.state.currentNum}
+            handleChange={e => this.handleChange(e)}
+            onClick={this.onCLickNextStage1}
+          />
+        )}
+        {this.state.stage === 2 && (
+          <Stage2 value={this.state.goodNum} max={this.state.numArray.length} />
+        )}
+      </div>
+    );
   }
 }
 
