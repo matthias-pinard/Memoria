@@ -3,14 +3,15 @@ import "./App.css";
 import Stage0 from "./Stage0.js";
 import Stage1 from "./Stage1.js";
 import Stage2 from "./Stage2.js";
+import getNums from "../utils/generateRandomNums.js";
 
 class App extends Component {
   constructor() {
     super();
-    let nums = ["06", "08", "09", "2"];
+    let nums = getNums(5);
     this.state = {
       numIndex: 0,
-      stage: 1,
+      stage: 0,
       currentNum: "",
       numArray: nums,
       answerNumArray: [],
