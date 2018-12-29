@@ -20,7 +20,9 @@ class App extends Component {
     };
     this.onCLickNextStage0 = this.onCLickNextStage0.bind(this);
     this.onCLickNextStage1 = this.onCLickNextStage1.bind(this);
+    this.onClickRestart = this.onClickRestart.bind(this);
     this.handleChangeNum = this.handleChangeNum.bind(this);
+    this.handleChangeName = this.handleChangeName.bind(this);
   }
 
   onCLickNextStage0() {
@@ -34,7 +36,6 @@ class App extends Component {
   }
 
   onCLickNextStage1() {
-    let i = this.state.index;
     let p = this.state.peoples[this.state.index];
     let goodNum = p.num === this.state.currentNum;
     let goodName = p.name === this.state.currentName;
@@ -51,6 +52,19 @@ class App extends Component {
     if (this.state.index >= this.state.peoples.length - 1) {
       this.setState({ stage: 2 });
     }
+  }
+
+  onClickRestart() {
+    let people = getPeople(5);
+    this.setState({
+      index: 0,
+      stage: 0,
+      currentName: "",
+      currentNum: "",
+      peoples: people,
+      answer: {},
+      goodNum: 0
+    });
   }
 
   handleChangeNum(e) {
@@ -87,7 +101,11 @@ class App extends Component {
           />
         )}
         {this.state.stage === 2 && (
-          <Stage2 value={this.state.goodNum} max={this.state.peoples.length} />
+          <Stage2
+            value={this.state.goodNum}
+            max={this.state.peoples.length}
+            onClick={this.onClickRestart}
+          />
         )}
       </div>
     );

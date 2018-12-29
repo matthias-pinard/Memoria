@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import NumDisplay from "./Stage0/NumDisplay";
 import NameDisplay from "./Stage0/NameDisplay";
 import ButtonNext from "../../components/ButtonNext";

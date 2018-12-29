@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import NumInput from "./Stage1/NumInput";
 import NameInput from "./Stage1/NameInput";
 import Face from "../../components/Face";
