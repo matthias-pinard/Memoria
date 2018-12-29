@@ -1,20 +1,25 @@
 import React, { Component } from "react";
 import "./App.css";
-import Stage0 from "./Stage0.js";
-import Stage1 from "./Stage1.js";
-import Stage2 from "./Stage2.js";
-import getNums from "../utils/generateRandomNums.js";
+import Stage0 from "./Stage0";
+import Stage1 from "./Stage1";
+import Stage2 from "./Stage2";
+import getNums from "../utils/generateRandomNums";
+import getNames from "../utils/getNames";
+import names from "../utils/names";
 
 class App extends Component {
   constructor() {
     super();
     let nums = getNums(5);
+    let names = getNames(5);
     this.state = {
-      numIndex: 0,
+      index: 0,
       stage: 0,
       currentNum: "",
-      numArray: nums,
-      answerNumArray: [],
+      numsArray: nums,
+      answernumsArray: [],
+      namesArray: names,
+      answerNameArray: [],
       goodNum: 0
     };
     this.onCLickNextStage0 = this.onCLickNextStage0.bind(this);
@@ -23,27 +28,27 @@ class App extends Component {
   }
 
   onCLickNextStage0() {
-    this.setState({ numIndex: this.state.numIndex + 1 });
-    if (this.state.numIndex >= this.state.numArray.length - 1) {
+    this.setState({ index: this.state.index + 1 });
+    if (this.state.index >= this.state.numsArray.length - 1) {
       this.setState({
         stage: 1,
-        numIndex: 0
+        index: 0
       });
     }
   }
 
   onCLickNextStage1() {
-    let i = this.state.numIndex;
-    let scoreAdd = this.state.numArray[i] === this.state.currentNum ? 1 : 0;
-    let answerNums = this.state.answerNumArray.slice();
+    let i = this.state.index;
+    let scoreAdd = this.state.numsArray[i] === this.state.currentNum ? 1 : 0;
+    let answerNums = this.state.answernumsArray.slice();
     answerNums.push(this.state.currentNum);
     this.setState({
-      answerNumArray: answerNums,
+      answernumsArray: answerNums,
       goodNum: this.state.goodNum + scoreAdd,
-      numIndex: this.state.numIndex + 1,
+      index: this.state.index + 1,
       currentNum: ""
     });
-    if (this.state.numIndex >= this.state.numArray.length - 1) {
+    if (this.state.index >= this.state.numsArray.length - 1) {
       this.setState({ stage: 2 });
     }
   }
@@ -58,7 +63,8 @@ class App extends Component {
         <h1> Memoria </h1>
         {this.state.stage === 0 && (
           <Stage0
-            num={this.state.numArray[this.state.numIndex]}
+            num={this.state.numsArray[this.state.index]}
+            name={this.state.namesArray[this.state.index]}
             onClick={this.onCLickNextStage0}
           />
         )}
@@ -70,7 +76,10 @@ class App extends Component {
           />
         )}
         {this.state.stage === 2 && (
-          <Stage2 value={this.state.goodNum} max={this.state.numArray.length} />
+          <Stage2
+            value={this.state.goodNum}
+            max={this.state.numsArray.length}
+          />
         )}
       </div>
     );
