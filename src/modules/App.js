@@ -4,7 +4,6 @@ import Stage0 from "./App/Stage0";
 import Stage1 from "./App/Stage1";
 import Stage2 from "./App/Stage2";
 import getPeople from "../utils/getPeople";
-// import shuffle from "../utils/shuffle"
 
 class App extends Component {
   constructor() {
@@ -13,14 +12,13 @@ class App extends Component {
     this.state = {
       index: 0,
       stage: 0,
+      score: 0,
       currentName: "",
       currentNum: "",
       peoples: peoples,
       answer: {}
     };
-    const indexAnswer = (this.onCLickNextStage0 = this.onCLickNextStage0.bind(
-      this
-    ));
+    this.onCLickNextStage0 = this.onCLickNextStage0.bind(this);
     this.onCLickNextStage1 = this.onCLickNextStage1.bind(this);
     this.onClickRestart = this.onClickRestart.bind(this);
     this.handleChangeNum = this.handleChangeNum.bind(this);
@@ -28,13 +26,13 @@ class App extends Component {
   }
 
   onCLickNextStage0() {
-    this.setState({ index: this.state.index + 1 });
+    this.setState({
+      index: this.state.index + 1
+    });
     if (this.state.index >= this.state.peoples.length - 1) {
-      // let peoples = shuffle(this.state.peoples)
       this.setState({
         stage: 1,
         index: 0
-        // peoples: peoples
       });
     }
   }
@@ -42,9 +40,12 @@ class App extends Component {
   onCLickNextStage1() {
     let p = this.state.peoples[this.state.index];
     let answer = { num: p.num, name: p.name };
-
+    let goodNum = p.num === this.state.currentNum;
+    let goodName = p.name === this.state.currentName;
+    let addScore = goodName && goodNum ? 1 : 0;
     this.setState({
       answer: answer,
+      score: this.state.score + addScore,
       index: this.state.index + 1,
       currentNum: "",
       currentName: ""
@@ -63,7 +64,7 @@ class App extends Component {
       currentNum: "",
       peoples: peoples,
       answer: {},
-      goodNum: 0
+      score: 0
     });
   }
 
@@ -102,7 +103,7 @@ class App extends Component {
         )}
         {this.state.stage === 2 && (
           <Stage2
-            value={this.state.goodNum}
+            value={this.state.score}
             max={this.state.peoples.length}
             onClick={this.onClickRestart}
           />
