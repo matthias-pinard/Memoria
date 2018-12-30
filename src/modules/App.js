@@ -4,21 +4,23 @@ import Stage0 from "./App/Stage0";
 import Stage1 from "./App/Stage1";
 import Stage2 from "./App/Stage2";
 import getPeople from "../utils/getPeople";
+// import shuffle from "../utils/shuffle"
 
 class App extends Component {
   constructor() {
     super();
-    let people = getPeople(5);
+    let peoples = getPeople(5);
     this.state = {
       index: 0,
       stage: 0,
       currentName: "",
       currentNum: "",
-      peoples: people,
-      answer: {},
-      goodNum: 0
+      peoples: peoples,
+      answer: {}
     };
-    this.onCLickNextStage0 = this.onCLickNextStage0.bind(this);
+    const indexAnswer = (this.onCLickNextStage0 = this.onCLickNextStage0.bind(
+      this
+    ));
     this.onCLickNextStage1 = this.onCLickNextStage1.bind(this);
     this.onClickRestart = this.onClickRestart.bind(this);
     this.handleChangeNum = this.handleChangeNum.bind(this);
@@ -28,23 +30,21 @@ class App extends Component {
   onCLickNextStage0() {
     this.setState({ index: this.state.index + 1 });
     if (this.state.index >= this.state.peoples.length - 1) {
+      // let peoples = shuffle(this.state.peoples)
       this.setState({
         stage: 1,
         index: 0
+        // peoples: peoples
       });
     }
   }
 
   onCLickNextStage1() {
     let p = this.state.peoples[this.state.index];
-    let goodNum = p.num === this.state.currentNum;
-    let goodName = p.name === this.state.currentName;
-    let scoreAdd = goodNum && goodName ? 1 : 0;
     let answer = { num: p.num, name: p.name };
 
     this.setState({
       answer: answer,
-      goodNum: this.state.goodNum + scoreAdd,
       index: this.state.index + 1,
       currentNum: "",
       currentName: ""
@@ -55,13 +55,13 @@ class App extends Component {
   }
 
   onClickRestart() {
-    let people = getPeople(5);
+    let peoples = getPeople(5);
     this.setState({
       index: 0,
       stage: 0,
       currentName: "",
       currentNum: "",
-      peoples: people,
+      peoples: peoples,
       answer: {},
       goodNum: 0
     });

@@ -1,9 +1,12 @@
 import React from "react";
 
+const style = {
+  borderRadius: 20
+};
 export default props => {
   return (
     <>
-      <img src={props.src} alt="face" />
+      <img style={style} src={props.src} alt="face" />
     </>
   );
 };

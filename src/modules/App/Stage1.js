@@ -17,7 +17,7 @@ export default props => {
         value={props.numValue}
         handleChange={e => props.numHandleChange(e)}
       />
-      <ButtonNext text="next" onClick={props.onClick} />
+      <ButtonNext text="Next" onClick={props.onClick} />
     </>
   );
 };
