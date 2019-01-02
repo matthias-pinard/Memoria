@@ -1,8 +1,8 @@
 import React from "react";
 import NumInput from "./Stage1/NumInput";
 import NameInput from "./Stage1/NameInput";
-import Face from "../../components/Face";
-import ButtonNext from "../../components/ButtonNext";
+import Face from "components/Face";
+import ButtonNext from "components/ButtonNext";
 
 export default props => {
   return (
