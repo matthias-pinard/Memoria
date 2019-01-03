@@ -1,9 +1,9 @@
 {
-  "main.css": "/Memoria/static/css/main.cd47f7b8.chunk.css",
-  "main.js": "/Memoria/static/js/main.494e123f.chunk.js",
-  "main.js.map": "/Memoria/static/js/main.494e123f.chunk.js.map",
-  "static/js/1.8abe5222.chunk.js": "/Memoria/static/js/1.8abe5222.chunk.js",
-  "static/js/1.8abe5222.chunk.js.map": "/Memoria/static/js/1.8abe5222.chunk.js.map",
+  "main.css": "/Memoria/static/css/main.d5fb24e0.chunk.css",
+  "main.js": "/Memoria/static/js/main.e47b9865.chunk.js",
+  "main.js.map": "/Memoria/static/js/main.e47b9865.chunk.js.map",
+  "static/js/1.1b8d8256.chunk.js": "/Memoria/static/js/1.1b8d8256.chunk.js",
+  "static/js/1.1b8d8256.chunk.js.map": "/Memoria/static/js/1.1b8d8256.chunk.js.map",
   "runtime~main.js": "/Memoria/static/js/runtime~main.ad8c3b35.js",
   "runtime~main.js.map": "/Memoria/static/js/runtime~main.ad8c3b35.js.map",
   "static/media/124.jpg": "/Memoria/static/media/124.64a02404.jpg",
@@ -14,8 +14,8 @@
   "static/media/63.jpg": "/Memoria/static/media/63.3397c241.jpg",
   "static/media/71.jpg": "/Memoria/static/media/71.63ee76f2.jpg",
   "static/media/147.jpg": "/Memoria/static/media/147.64a02404.jpg",
-  "static/css/main.cd47f7b8.chunk.css.map": "/Memoria/static/css/main.cd47f7b8.chunk.css.map",
+  "static/css/main.d5fb24e0.chunk.css.map": "/Memoria/static/css/main.d5fb24e0.chunk.css.map",
   "index.html": "/Memoria/index.html",
-  "precache-manifest.e638bfee0d3de0708aa70148014823ec.js": "/Memoria/precache-manifest.e638bfee0d3de0708aa70148014823ec.js",
+  "precache-manifest.ccb7fd6b5b6fe1212aae843860b1cb64.js": "/Memoria/precache-manifest.ccb7fd6b5b6fe1212aae843860b1cb64.js",
   "service-worker.js": "/Memoria/service-worker.js"
 }

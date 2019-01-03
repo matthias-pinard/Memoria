@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/Memoria/static/media/174.b5148138.jpg"
   },
   {
-    "revision": "494e123f759a3a34031f",
-    "url": "/Memoria/static/css/main.cd47f7b8.chunk.css"
+    "revision": "e47b9865b113b15b9856",
+    "url": "/Memoria/static/css/main.d5fb24e0.chunk.css"
   },
   {
-    "revision": "8abe52226c12c78ed704",
-    "url": "/Memoria/static/js/1.8abe5222.chunk.js"
+    "revision": "1b8d825674fc70288c33",
+    "url": "/Memoria/static/js/1.1b8d8256.chunk.js"
   },
   {
     "revision": "ad8c3b35c65df542c8d5",
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/Memoria/static/media/147.64a02404.jpg"
   },
   {
-    "revision": "494e123f759a3a34031f",
-    "url": "/Memoria/static/js/main.494e123f.chunk.js"
+    "revision": "e47b9865b113b15b9856",
+    "url": "/Memoria/static/js/main.e47b9865.chunk.js"
   },
   {
     "revision": "476eaa7cfd615adb34cb1e68129b5943",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/Memoria/static/media/71.63ee76f2.jpg"
   },
   {
-    "revision": "2cb3a84788299f9227f3881eb965167b",
+    "revision": "bee905d793cc4468f0c4a81f8bb2a896",
     "url": "/Memoria/index.html"
   }
 ];
