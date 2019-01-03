@@ -42,15 +42,18 @@ class Memoria extends Component {
 
   onCLickNextStage1() {
     let p = this.state.peoples[this.state.index];
+
+    let goodNum = p.num === this.state.currentNum;
+    let goodName = p.name === this.state.currentName;
+    let addScore = goodName && goodNum ? 1 : 0;
     let answers = this.state.answers.slice();
     answers.push({
       num: this.state.currentNum,
       name: this.state.currentName,
-      people: p
+      people: p,
+      goodAnswer: goodName && goodNum
     });
-    let goodNum = p.num === this.state.currentNum;
-    let goodName = p.name === this.state.currentName;
-    let addScore = goodName && goodNum ? 1 : 0;
+
     this.setState({
       answers: answers,
       score: this.state.score + addScore,
@@ -64,14 +67,14 @@ class Memoria extends Component {
   }
 
   onClickRestart() {
-    let peoples = getPeoples(5);
+    let peoples = getPeoples(3);
     this.setState({
       index: 0,
       stage: 0,
       currentName: "",
       currentNum: "",
       peoples: peoples,
-      answer: [],
+      answers: [],
       score: 0
     });
   }
