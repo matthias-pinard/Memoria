@@ -8,6 +8,7 @@ const CardStyle = styled.div`
   margin: 15px;
   text-align: center;
   font-size: 18px;
+  background-color: ${props => props.bg};
 `;
 const Img = styled.img`
   width: 100%;
@@ -15,7 +16,7 @@ const Img = styled.img`
 
 const Card = props => {
   return (
-    <CardStyle>
+    <CardStyle bg={props.bg}>
       <Img src={props.img} alt="" />
       {props.body}
     </CardStyle>

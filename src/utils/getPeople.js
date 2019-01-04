@@ -8,6 +8,9 @@ let getName = () => {
 
 let getPhoneNumber = () => {
   let end = Math.floor(Math.random() * 999999999);
+  while (end.toString().length < 9) {
+    end = "0" + end;
+  }
   return "0".concat(end);
 };
 

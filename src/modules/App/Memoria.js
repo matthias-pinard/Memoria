@@ -80,9 +80,7 @@ class Memoria extends Component {
   }
 
   handleChangeNum(e) {
-    if (e.target.value.replace(" ", "").match(/(^[0-9]*$)/g)) {
-      this.setState({ currentNum: e.target.value.replace(" ", "") });
-    }
+    this.setState({ currentNum: e.target.value });
   }
 
   handleChangeName(e) {

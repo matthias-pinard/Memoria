@@ -10,12 +10,12 @@ const CardInput = props => {
       body={
         <>
           <NameInput
-            nameValue={props.nameValue}
-            nameHandleChange={e => props.nameHandleChange(e)}
+            value={props.nameValue}
+            handleChange={e => props.nameHandleChange(e)}
           />
           <NumInput
-            numValue={props.numValue}
-            numHandleChange={e => props.numHandleChange(e)}
+            value={props.numValue}
+            handleChange={e => props.numHandleChange(e)}
           />
         </>
       }

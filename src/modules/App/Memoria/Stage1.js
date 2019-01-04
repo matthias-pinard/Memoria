@@ -8,7 +8,7 @@ export default props => {
       <CardInput
         face={props.face}
         nameValue={props.nameValue}
-        nameHandleChange={props.nameHandleChange}
+        nameHandleChange={e => props.nameHandleChange(e)}
         numValue={props.numValue}
         numHandleChange={props.numHandleChange}
       />

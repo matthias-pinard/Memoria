@@ -4,8 +4,15 @@ import NumDisplay from "./PeopleCard/NumDisplay";
 import Card from "./Card.js";
 
 const PeopleCard = props => {
+  var bg =
+    props.goodAnswer === undefined
+      ? "white"
+      : props.goodAnswer
+      ? "green"
+      : "red";
   return (
     <Card
+      bg={bg}
       img={props.face}
       body={
         <>

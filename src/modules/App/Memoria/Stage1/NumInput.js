@@ -1,9 +1,11 @@
 import React from "react";
+import formatNum from "utils/formatPhoneNumber.js";
 
 export default props => {
+  let num = formatNum(props.value);
   return (
     <div>
-      Num: <input value={props.value} onChange={props.handleChange} />
+      Num: <input value={num} onChange={props.handleChange} />
     </div>
   );
 };
