@@ -1,9 +1,9 @@
 {
   "main.css": "/Memoria/static/css/main.d5fb24e0.chunk.css",
-  "main.js": "/Memoria/static/js/main.140055e6.chunk.js",
-  "main.js.map": "/Memoria/static/js/main.140055e6.chunk.js.map",
-  "static/js/1.e30b0fb5.chunk.js": "/Memoria/static/js/1.e30b0fb5.chunk.js",
-  "static/js/1.e30b0fb5.chunk.js.map": "/Memoria/static/js/1.e30b0fb5.chunk.js.map",
+  "main.js": "/Memoria/static/js/main.76c1eb8f.chunk.js",
+  "main.js.map": "/Memoria/static/js/main.76c1eb8f.chunk.js.map",
+  "static/js/1.bf1ef045.chunk.js": "/Memoria/static/js/1.bf1ef045.chunk.js",
+  "static/js/1.bf1ef045.chunk.js.map": "/Memoria/static/js/1.bf1ef045.chunk.js.map",
   "runtime~main.js": "/Memoria/static/js/runtime~main.ad8c3b35.js",
   "runtime~main.js.map": "/Memoria/static/js/runtime~main.ad8c3b35.js.map",
   "static/media/124.jpg": "/Memoria/static/media/124.64a02404.jpg",
@@ -16,6 +16,6 @@
   "static/media/71.jpg": "/Memoria/static/media/71.63ee76f2.jpg",
   "static/css/main.d5fb24e0.chunk.css.map": "/Memoria/static/css/main.d5fb24e0.chunk.css.map",
   "index.html": "/Memoria/index.html",
-  "precache-manifest.40b4474c17e10dc8018db0a864f56d27.js": "/Memoria/precache-manifest.40b4474c17e10dc8018db0a864f56d27.js",
+  "precache-manifest.f56f644d856997c3c62a87a077387655.js": "/Memoria/precache-manifest.f56f644d856997c3c62a87a077387655.js",
   "service-worker.js": "/Memoria/service-worker.js"
 }

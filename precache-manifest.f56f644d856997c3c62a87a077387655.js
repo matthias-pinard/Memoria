@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "140055e65b500753672d",
+    "revision": "76c1eb8fec68ad470870",
     "url": "/Memoria/static/css/main.d5fb24e0.chunk.css"
   },
   {
-    "revision": "140055e65b500753672d",
-    "url": "/Memoria/static/js/main.140055e6.chunk.js"
+    "revision": "76c1eb8fec68ad470870",
+    "url": "/Memoria/static/js/main.76c1eb8f.chunk.js"
   },
   {
-    "revision": "e30b0fb50181b4bd0ce8",
-    "url": "/Memoria/static/js/1.e30b0fb5.chunk.js"
+    "revision": "bf1ef0451d5ab065ccbb",
+    "url": "/Memoria/static/js/1.bf1ef045.chunk.js"
   },
   {
     "revision": "ad8c3b35c65df542c8d5",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/Memoria/static/media/71.63ee76f2.jpg"
   },
   {
-    "revision": "180c45b62d844ffffb07502503521583",
+    "revision": "914014832f396ce4d17f6fe8a577f333",
     "url": "/Memoria/index.html"
   }
 ];
