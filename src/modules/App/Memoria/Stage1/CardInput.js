@@ -9,14 +9,18 @@ const CardInput = props => {
       img={props.face}
       body={
         <>
-          <NameInput
-            value={props.nameValue}
-            handleChange={e => props.nameHandleChange(e)}
-          />
-          <NumInput
-            value={props.numValue}
-            handleChange={e => props.numHandleChange(e)}
-          />
+          {props.displayName && (
+            <NameInput
+              value={props.nameValue}
+              handleChange={e => props.nameHandleChange(e)}
+            />
+          )}
+          {props.displayNum && (
+            <NumInput
+              value={props.numValue}
+              handleChange={e => props.numHandleChange(e)}
+            />
+          )}
         </>
       }
     />

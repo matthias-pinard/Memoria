@@ -16,8 +16,8 @@ const PeopleCard = props => {
       img={props.face}
       body={
         <>
-          <NameDisplay name={props.name} />
-          <NumDisplay num={props.num} />
+          {props.displayName && <NameDisplay name={props.name} />}
+          {props.displayNum && <NumDisplay num={props.num} />}
         </>
       }
     />

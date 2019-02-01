@@ -7,7 +7,11 @@ export default props => {
   return (
     <>
       <Score value={props.value} max={props.max} />
-      <ResumeCard answers={props.answers} />
+      <ResumeCard
+        answers={props.answers}
+        displayName={props.displayName}
+        displayNum={props.displayNum}
+      />
       <Button text="Restart" onClick={props.onClick} />
     </>
   );

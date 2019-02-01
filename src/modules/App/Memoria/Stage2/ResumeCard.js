@@ -18,11 +18,15 @@ const ResumeCard = props => {
               name={answer.name}
               num={answer.num}
               goodAnswer={answer.goodAnswer}
+              displayName={props.displayName}
+              displayNum={props.displayNum}
             />
             <PeopleCard
               face={answer.people.face}
               name={answer.people.name}
               num={answer.people.num}
+              displayName={props.displayName}
+              displayNum={props.displayNum}
             />
           </Container>
         );

@@ -11,6 +11,8 @@ export default props => {
         nameHandleChange={e => props.nameHandleChange(e)}
         numValue={props.numValue}
         numHandleChange={props.numHandleChange}
+        displayName={props.displayName}
+        displayNum={props.displayNum}
       />
       <ButtonNext text="Next" onClick={props.onClick} />
     </>
