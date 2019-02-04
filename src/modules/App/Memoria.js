@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import { useState } from "react";
 import "./Memoria.css";
 import Setting from "./Memoria/Setting";
 import Stage0 from "./Memoria/Stage0";
@@ -7,170 +8,143 @@ import Stage2 from "./Memoria/Stage2";
 import getPeoples from "utils/getPeople";
 import shuffle from "utils/shuffle";
 
-class Memoria extends Component {
-  constructor() {
-    super();
-    let settings = JSON.parse(localStorage.getItem("settings"));
-    if (!settings) {
-      settings = { face: true, name: true, phone: true, number: 5 };
-    }
-    this.state = {
-      index: 0,
-      stage: -1,
-      score: 0,
-      currentName: "",
-      currentNum: "",
-      peoples: {},
-      answers: [],
-      settings: settings
-    };
-    this.handleInputChangeSetting = this.handleInputChangeSetting.bind(this);
-    this.onSubmitSetting = this.onSubmitSetting.bind(this);
-    this.onCLickNextStage0 = this.onCLickNextStage0.bind(this);
-    this.onCLickNextStage1 = this.onCLickNextStage1.bind(this);
-    this.onClickRestart = this.onClickRestart.bind(this);
-    this.handleChangeNum = this.handleChangeNum.bind(this);
-    this.handleChangeName = this.handleChangeName.bind(this);
+function Memoria(props) {
+  let vsettings = JSON.parse(localStorage.getItem("settings"));
+  if (!vsettings) {
+    vsettings = { face: true, name: true, phone: true, number: 5 };
   }
 
-  handleInputChangeSetting(event) {
+  const [index, setIndex] = useState(0);
+  const [stage, setStage] = useState(-1);
+  const [score, setScore] = useState(0);
+  const [name, setName] = useState("");
+  const [num, setNum] = useState("");
+  const [peoples, setPeoples] = useState({});
+  const [answers, setAnswers] = useState([]);
+  const [settings, setSettings] = useState(vsettings);
+
+  function handleInputChangeSetting(event) {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.name;
-    let settings = this.state.settings;
-    settings[name] = value;
-    this.setState({
-      settings: settings
-    });
-    console.log("change");
+    const vname = target.name;
+    let s = settings;
+    s[vname] = value;
+    setSettings(s);
   }
 
-  onSubmitSetting(event) {
+  function onSubmitSetting(event) {
     let storage = localStorage;
-    storage.setItem("settings", JSON.stringify(this.state.settings));
+    storage.setItem("settings", JSON.stringify(settings));
     console.log("setting submitted");
-    const peoples = getPeoples(this.state.settings.number);
-    this.setState({
-      stage: 0,
-      peoples: peoples
-    });
+    const peoples = getPeoples(settings.number);
+
+    setStage(0);
+    setPeoples(peoples);
+
     event.preventDefault();
   }
 
-  onCLickNextStage0() {
-    this.setState({
-      index: this.state.index + 1
-    });
-    if (this.state.index >= this.state.peoples.length - 1) {
-      let peoples = shuffle(this.state.peoples.slice());
-      this.setState({
-        stage: 1,
-        index: 0,
-        peoples: peoples
-      });
+  function onCLickNextStage0() {
+    setIndex(index + 1);
+    if (index >= peoples.length - 1) {
+      setStage(1);
+      setIndex(0);
+      setPeoples(shuffle(peoples.slice()));
     }
   }
 
-  onCLickNextStage1() {
-    let dipslayName = this.state.settings.name;
-    let displayNum = this.state.settings.phone;
-    let p = this.state.peoples[this.state.index];
+  function onCLickNextStage1() {
+    let dipslayName = settings.name;
+    let displayNum = settings.phone;
+    let p = peoples[index];
 
-    let num = this.state.currentNum.replace(/[^\d]/g, "");
-    let goodNum = p.num === num;
-    let goodName = p.name === this.state.currentName;
+    let vnum = num.replace(/[^\d]/g, "");
+    let goodNum = p.num === vnum;
+    let goodName = p.name === name;
     let goodAnswer = (goodName || !dipslayName) && (goodNum || !displayNum);
-    let answers = this.state.answers.slice();
-    answers.push({
+    let vanswers = answers.slice();
+    vanswers.push({
       num: num,
-      name: this.state.currentName,
+      name: name,
       people: p,
       goodAnswer: goodAnswer
     });
 
-    const score = this.state.score + (goodAnswer ? 1 : 0);
-    this.setState({
-      answers: answers,
-      score: score,
-      index: this.state.index + 1,
-      currentNum: "",
-      currentName: ""
-    });
-    if (this.state.index >= this.state.peoples.length - 1) {
-      this.setState({ stage: 2 });
+    setAnswers(vanswers);
+    setScore(score + (goodAnswer ? 1 : 0));
+    setIndex(index + 1);
+    setNum("");
+    setName("");
+    if (index >= peoples.length - 1) {
+      setStage(2);
     }
   }
 
-  onClickRestart() {
-    let peoples = getPeoples(this.state.settings.number);
-    this.setState({
-      index: 0,
-      stage: -1,
-      currentName: "",
-      currentNum: "",
-      peoples: peoples,
-      answers: [],
-      score: 0
-    });
+  function onClickRestart() {
+    setPeoples(getPeoples(settings.number));
+    setIndex(0);
+    setStage(-1);
+    setName("");
+    setNum("");
+    setAnswers([]);
+    setScore(0);
   }
 
-  handleChangeNum(e) {
-    this.setState({ currentNum: e.target.value });
+  function handleChangeNum(e) {
+    setNum(e.target.value);
   }
 
-  handleChangeName(e) {
-    this.setState({ currentName: e.target.value });
+  function handleChangeName(e) {
+    setName(e.target.value);
   }
 
-  render() {
-    let p = this.state.peoples[this.state.index];
-    return (
-      <div className="Memoria">
-        <h1> Memoria </h1>
-        {this.state.stage === -1 && (
-          <Setting
-            onSubmit={e => this.onSubmitSetting(e)}
-            handleInputChange={e => this.handleInputChangeSetting(e)}
-            defaultNumber={this.state.settings.number}
-            defaultPhone={this.state.settings.phone}
-            defaultName={this.state.settings.name}
-          />
-        )}
-        {this.state.stage === 0 && (
-          <Stage0
-            face={p.face}
-            num={p.num}
-            name={p.name}
-            displayName={this.state.settings.name}
-            displayNum={this.state.settings.phone}
-            onClick={this.onCLickNextStage0}
-          />
-        )}
-        {this.state.stage === 1 && (
-          <Stage1
-            face={p.face}
-            numValue={this.state.currentNum}
-            numHandleChange={e => this.handleChangeNum(e)}
-            nameValue={this.state.currentName}
-            nameHandleChange={e => this.handleChangeName(e)}
-            onClick={this.onCLickNextStage1}
-            displayName={this.state.settings.name}
-            displayNum={this.state.settings.phone}
-          />
-        )}
-        {this.state.stage === 2 && (
-          <Stage2
-            value={this.state.score}
-            max={this.state.peoples.length}
-            answers={this.state.answers}
-            onClick={this.onClickRestart}
-            displayName={this.state.settings.name}
-            displayNum={this.state.settings.phone}
-          />
-        )}
-      </div>
-    );
-  }
+  let p = peoples[index];
+  return (
+    <div className="Memoria">
+      <h1> Memoria </h1>
+      {stage === -1 && (
+        <Setting
+          onSubmit={e => onSubmitSetting(e)}
+          handleInputChange={e => handleInputChangeSetting(e)}
+          defaultNumber={settings.number}
+          defaultPhone={settings.phone}
+          defaultName={settings.name}
+        />
+      )}
+      {stage === 0 && (
+        <Stage0
+          face={p.face}
+          num={p.num}
+          name={p.name}
+          displayName={settings.name}
+          displayNum={settings.phone}
+          onClick={onCLickNextStage0}
+        />
+      )}
+      {stage === 1 && (
+        <Stage1
+          face={p.face}
+          numValue={num}
+          numHandleChange={e => handleChangeNum(e)}
+          nameValue={name}
+          nameHandleChange={e => handleChangeName(e)}
+          onClick={onCLickNextStage1}
+          displayName={settings.name}
+          displayNum={settings.phone}
+        />
+      )}
+      {stage === 2 && (
+        <Stage2
+          value={score}
+          max={peoples.length}
+          answers={answers}
+          onClick={onClickRestart}
+          displayName={settings.name}
+          displayNum={settings.phone}
+        />
+      )}
+    </div>
+  );
 }
 
-export default Memoria;
+export default props => Memoria(props);
