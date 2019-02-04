@@ -4,8 +4,8 @@
   "private": true,
   "homepage": "https://nassafy.github.io/Memoria/",
   "dependencies": {
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react": "0.0.0-fec00a869",
+    "react-dom": "0.0.0-fec00a869",
     "react-scripts": "2.1.2",
     "styled-components": "^4.1.3"
   },
