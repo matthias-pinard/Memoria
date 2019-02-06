@@ -36,10 +36,9 @@ function Memoria(props) {
     let storage = localStorage;
     storage.setItem("settings", JSON.stringify(settings));
     console.log("setting submitted");
-    const peoples = getPeoples(settings.number);
 
     setStage(0);
-    setPeoples(peoples);
+    setPeoples(getPeoples(settings.number));
 
     event.preventDefault();
   }
@@ -99,6 +98,7 @@ function Memoria(props) {
   }
 
   let p = peoples[index];
+  console.log("peoples" + peoples);
   return (
     <div className="Memoria">
       <h1> Memoria </h1>
