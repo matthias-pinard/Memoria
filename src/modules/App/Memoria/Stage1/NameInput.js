@@ -1,8 +1,9 @@
 import React from "react";
+import Input from "components/Input.js";
 export default props => {
   return (
     <>
-      Name: <input value={props.value} onChange={props.handleChange} />
+      Name: <Input value={props.value} onChange={props.handleChange} />
     </>
   );
 };
