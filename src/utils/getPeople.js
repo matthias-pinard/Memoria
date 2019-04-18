@@ -16,6 +16,8 @@ let getPhoneNumber = () => {
 
 let getFace = () => {
   let i = Math.floor(Math.random() * 200);
+  let img = new Image();
+  img.src = "./img/" + i + ".jpg";
   return require("./img/" + i + ".jpg");
 };
 
