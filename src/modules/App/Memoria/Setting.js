@@ -1,11 +1,12 @@
 import React from "react";
 import ButtonNext from "../../../components/ButtonNext";
+import Input from "components/Input";
 
 function Setting(props) {
   return (
     <div>
       <form onSubmit={e => props.onSubmit(e)}>
-        <input
+        <Input
           type="checkbox"
           name="name"
           value="name"
@@ -15,7 +16,7 @@ function Setting(props) {
         />
         <label htmlFor="name">Name</label>
         <br />
-        <input
+        <Input
           type="checkbox"
           name="phone"
           value="phone"
@@ -25,7 +26,7 @@ function Setting(props) {
         />
         <label htmlFor="phone">Phone</label>
         <br />
-        <input
+        <Input
           type="number"
           name="number"
           defaultValue={props.defaultNumber}

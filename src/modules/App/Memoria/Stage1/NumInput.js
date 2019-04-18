@@ -5,7 +5,7 @@ export default props => {
   let num = formatNum(props.value);
   return (
     <div>
-      Num: <Input value={num} onChange={props.handleChange} />
+      Num: <Input value={num} onChange={props.handleChange} type="tel" />
     </div>
   );
 };
