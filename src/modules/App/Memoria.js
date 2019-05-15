@@ -19,7 +19,7 @@ function Memoria(props) {
   const [score, setScore] = useState(0);
   const [name, setName] = useState("");
   const [num, setNum] = useState("");
-  const [peoples, setPeoples] = useState({});
+  const [peoples, setPeoples] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [settings, setSettings] = useState(vsettings);
 
@@ -35,8 +35,6 @@ function Memoria(props) {
   function onSubmitSetting(event) {
     let storage = localStorage;
     storage.setItem("settings", JSON.stringify(settings));
-    console.log("setting submitted");
-
     setStage(0);
     setPeoples(getPeoples(settings.number));
 
@@ -143,6 +141,9 @@ function Memoria(props) {
           displayNum={settings.phone}
         />
       )}
+      {peoples.map(people => {
+        return <link rel="preload" href={people.face} as="images" />;
+      })}
     </div>
   );
 }
