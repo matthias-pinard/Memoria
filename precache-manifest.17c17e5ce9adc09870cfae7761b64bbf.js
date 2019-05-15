@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/Memoria/static/media/187.c8cf9f85.jpg"
   },
   {
-    "revision": "f2e0cca554b3cdbfea97",
+    "revision": "bfb49f1f9e6bc7cf3f93",
     "url": "/Memoria/static/css/main.480e03b2.chunk.css"
   },
   {
@@ -408,8 +408,8 @@ self.__precacheManifest = [
     "url": "/Memoria/static/media/186.1cdfe7a4.jpg"
   },
   {
-    "revision": "f2e0cca554b3cdbfea97",
-    "url": "/Memoria/static/js/main.2d984a47.chunk.js"
+    "revision": "bfb49f1f9e6bc7cf3f93",
+    "url": "/Memoria/static/js/main.753bcac6.chunk.js"
   },
   {
     "revision": "69acde84832e658aee901617f73119dc",
@@ -816,7 +816,7 @@ self.__precacheManifest = [
     "url": "/Memoria/static/media/99.278b1a60.jpg"
   },
   {
-    "revision": "f16119e88b24f2332b532549577a8616",
+    "revision": "ce791dee7b38a589a4d6fad034ee5812",
     "url": "/Memoria/index.html"
   }
 ];
