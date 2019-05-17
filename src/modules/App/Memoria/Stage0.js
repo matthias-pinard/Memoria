@@ -1,8 +1,12 @@
 import React from "react";
 import PeopleCard from "../../../components/PeopleCard";
 import ButtonNext from "../../../components/ButtonNext";
+import { useHotkeys } from "react-hotkeys-hook";
 
 const Stage0 = props => {
+  useHotkeys("enter", () => {
+    props.onClick();
+  });
   return (
     <>
       <PeopleCard

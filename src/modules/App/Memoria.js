@@ -142,7 +142,7 @@ function Memoria(props) {
         />
       )}
       {peoples.map(people => {
-        return <link rel="preload" href={people.face} as="images" />;
+        return <img hidden="true" src={people.face} alt="preload" />;
       })}
     </div>
   );
