@@ -816,7 +816,7 @@ self.__precacheManifest = [
     "url": "/Memoria/static/media/99.278b1a60.jpg"
   },
   {
-    "revision": "ce791dee7b38a589a4d6fad034ee5812",
+    "revision": "e8ec777adec4155ae89d77a1eeae391a",
     "url": "/Memoria/index.html"
   }
 ];
