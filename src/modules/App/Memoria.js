@@ -41,12 +41,9 @@ function Memoria(props) {
     let storage = localStorage;
     let current_settings = JSON.parse(localStorage.getItem("settings"));
     let current_number = Number(current_settings.number);
-    console.log(`current setting: ${current_settings}`);
-    console.log(`current number: ${current_number}`);
     let nb_answer = answers.length;
     let good_answer = answers.filter(v => v.goodAnswer).length;
     let accuracy = good_answer / nb_answer;
-    console.log(`accuracy: ${accuracy}`);
     if (accuracy >= 0.9) {
       current_settings.number = current_number + 5;
     } else if (accuracy < 0.8 && current_number > 5) {
