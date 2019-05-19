@@ -16,6 +16,7 @@ export default initialValue => {
     onSubmitSetting: event => {
       let storage = localStorage;
       storage.setItem("settings", JSON.stringify(settings));
+      setStage(0);
       setPeoples(getPeoples(settings.number));
       event.preventDefault();
     }

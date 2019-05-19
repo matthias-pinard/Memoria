@@ -11,7 +11,7 @@ import shuffle from "utils/shuffle";
 function Memoria(props) {
   let vsettings = JSON.parse(localStorage.getItem("settings"));
   if (!vsettings) {
-    vsettings = { face: true, name: true, phone: true, number: 5 };
+    vsettings = { face: true, name: true, phone: false, number: 5 };
   }
 
   const [index, setIndex] = useState(0);
@@ -32,9 +32,32 @@ function Memoria(props) {
     setSettings(s);
   }
 
-  function onSubmitSetting(event) {
+  function updateSetting(new_settings) {
     let storage = localStorage;
-    storage.setItem("settings", JSON.stringify(settings));
+    storage.setItem("settings", JSON.stringify(new_settings));
+  }
+
+  function updateScore(answers) {
+    let storage = localStorage;
+    let current_settings = JSON.parse(localStorage.getItem("settings"));
+    let current_number = Number(current_settings.number);
+    console.log(`current setting: ${current_settings}`);
+    console.log(`current number: ${current_number}`);
+    let nb_answer = answers.length;
+    let good_answer = answers.filter(v => v.goodAnswer).length;
+    let accuracy = good_answer / nb_answer;
+    console.log(`accuracy: ${accuracy}`);
+    if (accuracy >= 0.9) {
+      current_settings.number = current_number + 5;
+    } else if (accuracy < 0.8 && current_number > 5) {
+      current_settings.number = current_number - 5;
+    }
+    storage.setItem("settings", JSON.stringify(current_settings));
+    setSettings(current_settings);
+  }
+
+  function onSubmitSetting(event) {
+    updateSetting(settings);
     setStage(0);
     setPeoples(getPeoples(settings.number));
 
@@ -73,6 +96,7 @@ function Memoria(props) {
     setNum("");
     setName("");
     if (index >= peoples.length - 1) {
+      updateScore(answers);
       setStage(2);
     }
   }
@@ -96,7 +120,6 @@ function Memoria(props) {
   }
 
   let p = peoples[index];
-  console.log("peoples" + peoples);
   return (
     <div className="Memoria">
       <h1> Memoria </h1>
@@ -141,8 +164,8 @@ function Memoria(props) {
           displayNum={settings.phone}
         />
       )}
-      {peoples.map(people => {
-        return <img hidden="true" src={people.face} alt="preload" />;
+      {peoples.map((people, key) => {
+        return <img hidden={true} src={people.face} alt="preload" key={key} />;
       })}
     </div>
   );

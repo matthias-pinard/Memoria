@@ -10,7 +10,6 @@ const ResumeCard = props => {
   return (
     <div>
       {props.answers.map((answer, i) => {
-        console.log(answer);
         return (
           <Container key={i}>
             <PeopleCard
