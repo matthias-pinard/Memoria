@@ -1,25 +1,37 @@
-import React from "react";
-import NameInput from "./NameInput.js";
-import NumInput from "./NumInput.js";
+import React, { useRef, useEffect } from "react";
+import Input from "components/Input";
 import Card from "components/Card.js";
 
 const CardInput = props => {
+  const inputRef = useRef(null);
+  useEffect(() => {
+    inputRef.current.focus();
+  });
+
   return (
     <Card
       img={props.face}
       body={
         <>
           {props.displayName && (
-            <NameInput
-              value={props.nameValue}
-              handleChange={e => props.nameHandleChange(e)}
-            />
+            <div>
+              Name:{" "}
+              <Input
+                value={props.nameValue}
+                onChange={props.nameHandleChange}
+                ref={inputRef}
+              />
+            </div>
           )}
           {props.displayNum && (
-            <NumInput
-              value={props.numValue}
-              handleChange={e => props.numHandleChange(e)}
-            />
+            <div>
+              Num:{" "}
+              <Input
+                value={props.numValue}
+                onChange={props.numHandleChange}
+                type="tel"
+              />
+            </div>
           )}
         </>
       }

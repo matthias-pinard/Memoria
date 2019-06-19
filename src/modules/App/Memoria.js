@@ -38,12 +38,12 @@ function Memoria(props) {
   }
 
   function updateScore(answers) {
-    let storage = localStorage;
-    let current_settings = JSON.parse(localStorage.getItem("settings"));
-    let current_number = Number(current_settings.number);
-    let nb_answer = answers.length;
-    let good_answer = answers.filter(v => v.goodAnswer).length;
-    let accuracy = good_answer / nb_answer;
+    const storage = localStorage;
+    const current_settings = JSON.parse(localStorage.getItem("settings"));
+    const current_number = Number(current_settings.number);
+    const nb_answer = answers.length;
+    const good_answer = answers.filter(v => v.goodAnswer).length;
+    const accuracy = good_answer / nb_answer;
     if (accuracy >= 0.9) {
       current_settings.number = current_number + 5;
     } else if (accuracy < 0.8 && current_number > 5) {
@@ -58,28 +58,32 @@ function Memoria(props) {
     setStage(0);
     setPeoples(getPeoples(settings.number));
 
-    event.preventDefault();
+    //event.preventDefault();
   }
 
   function onCLickNextStage0() {
-    setIndex(index + 1);
-    if (index >= peoples.length - 1) {
-      setStage(1);
-      setIndex(0);
+    if (index < peoples.length - 1) {
+      setIndex(index + 1);
+    } else {
       setPeoples(shuffle(peoples.slice()));
+      setIndex(0);
+      setStage(1);
     }
   }
 
   function onCLickNextStage1() {
-    let dipslayName = settings.name;
-    let displayNum = settings.phone;
-    let p = peoples[index];
+    // Submit the answer
+    const dipslayName = settings.name;
+    const displayNum = settings.phone;
+    const p = peoples[index];
+    const vnum = num.replace(/[^\d]/g, "");
+    const goodNum = p.num === vnum;
+    const goodName = p.name === name;
+    const goodAnswer = (goodName || !dipslayName) && (goodNum || !displayNum);
+    const vanswers = answers.slice();
+    setAnswers(vanswers);
+    setScore(score + (goodAnswer ? 1 : 0));
 
-    let vnum = num.replace(/[^\d]/g, "");
-    let goodNum = p.num === vnum;
-    let goodName = p.name === name;
-    let goodAnswer = (goodName || !dipslayName) && (goodNum || !displayNum);
-    let vanswers = answers.slice();
     vanswers.push({
       num: num,
       name: name,
@@ -87,14 +91,13 @@ function Memoria(props) {
       goodAnswer: goodAnswer
     });
 
-    setAnswers(vanswers);
-    setScore(score + (goodAnswer ? 1 : 0));
-    setIndex(index + 1);
-    setNum("");
-    setName("");
     if (index >= peoples.length - 1) {
       updateScore(answers);
       setStage(2);
+    } else {
+      setIndex(index + 1);
+      setNum("");
+      setName("");
     }
   }
 
