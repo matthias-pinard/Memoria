@@ -5,6 +5,7 @@
   "homepage": "https://nassafy.github.io/Memoria/",
   "main": "src/electron.js",
   "dependencies": {
+    "hotkeys-js": "^3.6.11",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-scripts": "^2.1.8",
